@@ -1,0 +1,23 @@
+.sidebar{
+    background-color: orange;
+    border-top: 1px solid white;
+    max-width: 320px;
+    color: white;
+}
+
+.sidebar__header{
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid white;
+  padding: 13px;
+}
+
+.sidebar__header > .MuiSvgIcon-root{
+    font-size: 50px;
+    padding: 8px;
+    
+}
+
+.sidebar__addbtn{
+    flex: 1;
+}
