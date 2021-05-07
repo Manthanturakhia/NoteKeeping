@@ -33,10 +33,7 @@ function Login() {
           value={username}
           onChange={(e) => setUserName(e.target.value)}
         />
-        {/* <input type="text" name="username"
-            placeholder="username" 
-            value={username}
-            onChange = {(e) => setUserName(e.target.value)}/>  */}
+
         <TextField
           id="standard-basic"
           label="Password"
@@ -54,7 +51,7 @@ function Login() {
         </Link>
         <br />
         <br />
-        <Link to="/home">
+        <Link to="/">
           <Button variant="contained" color="primary">
             Home
           </Button>
