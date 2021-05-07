@@ -1,4 +1,21 @@
 .editorWindow > .MuiTextField-root {
     margin-bottom: 50px;
-    padding-top: 25px;
+    margin-left: 25px;
+    
   }
+  .editorWindow{
+      margin-top: 25px;
+  }
+
+ .editorWindow__btn{
+     display: flex;
+     align-items: flex-end;
+     justify-content: flex-end;
+     margin-right: 25px;
+ }
+
+ .editorWindow__btn > .MuiButton-root{
+   
+    margin-left: 20px;
+    
+ }

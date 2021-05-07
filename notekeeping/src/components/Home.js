@@ -8,6 +8,7 @@ import SidebarNotes from "./SidebarNotes"
 import "./Home.css"
 import EditorWindow from "./EditorWindow";
 import Login from "./Login";
+import { Button } from "@material-ui/core";
 function Home() {
   const [{ user }, dispatch] = useStateValue();
   const [{ userNotes }] = useStateValue([]);
@@ -38,9 +39,10 @@ function Home() {
             
             <div className="home__editorWindow">
                 <EditorWindow />
-                <h1>HOME PAGE</h1>
+             
                 </div>
         </div>
+       
         </>
          )
          

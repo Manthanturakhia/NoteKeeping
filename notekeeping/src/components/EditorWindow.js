@@ -1,12 +1,34 @@
-import { TextField } from '@material-ui/core'
-import React from 'react'
-
+import { Button, TextField } from '@material-ui/core'
+import React,{useState} from 'react'
+import "./EditorWindow.css"
 function EditorWindow() {
+    const save = () => {
+        
+      };
+    const [title, setTitle] = useState("")
+    const[body,setBody] = useState("")
     return (
         <div className="editorWindow">
-            <h1>this is the editor</h1>
-            <TextField id="outlined-basic" label="Title" variant="outlined" />
+           
+            <TextField id="outlined-basic" fullWidth="true" label="Title" variant="outlined"
+            style = {{width: 1150}} 
+            onChange={(e) => setTitle(e.target.value)}/>
+            <TextField id="outlined-basic" multiline rows={25}
+                fullWidth="true" label="Note" variant="outlined"
+            style = {{width: 1150}} 
+            onChange={(e) => setBody(e.target.value)}
+            />
+            <div className="editorWindow__btn">
+             <Button variant="contained" color="primary" onClick={save} >
+                 Save
+             </Button>
+             <Button variant="contained" color="primary">
+                 Discard
+             </Button>
+             </div>
+             
         </div>
+
     )
 }
 
