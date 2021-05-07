@@ -56,10 +56,7 @@ function Register() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {/* <TextField id="standard-basic"  label=" User type" 
-            placeholder="hr/emp/manager" 
-            value={user_type}
-            onChange = {(e) => setUsertype(e.target.value)}/>  */}
+
         <TextField
           id="standard-basic"
           label="Email ID"

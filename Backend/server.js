@@ -16,11 +16,11 @@ app.use(
   })
 );
 
-app.use(cookieParser);
+//app.use(cookieParser);
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(
+/*app.use(
   session({
     key: "userId",
     secret: "secretkey",
@@ -31,7 +31,7 @@ app.use(
     },
   })
 );
-
+*/
 const db = mysql.createPool({
   host: "localhost",
   user: "root",
@@ -44,12 +44,21 @@ app.post("/register", (req, res) => {
   const username = req.body.username;
   const email = req.body.email;
   const password = req.body.password;
-  const sqlInsert = "Insert into users values (?,?,?,?)";
-  db.query(sqlInsert, [username, name, email, password], (err, result) => {
-    console.log(result);
-  });
-});
 
+  try {
+    const sqlInsert = "Insert into users values (?,?,?,?)";
+    db.query(sqlInsert, [username, name, email, password], (err, result) => {
+      console.log(result);
+    });
+
+    console.log("user created");
+  } catch (error) {
+    if (error.code === 11000) {
+      return res.json({ status: "error", error: "Username is already in use" });
+    }
+    console.log(error.message);
+  }
+});
 app.post("/login", async (req, res) => {
   const { username, password } = req.body;
 
@@ -62,8 +71,8 @@ app.post("/login", async (req, res) => {
       console.log("not found");
     } else {
       console.log("found");
-      req.session.user = result;
-      console.log(req.session.user);
+      //req.session.user = result;
+      //console.log(req.session.user);
       res.status(200).send(result);
     }
   });
