@@ -7,6 +7,7 @@ import SidebarNotes from "./SidebarNotes"
 
 import "./Home.css"
 import EditorWindow from "./EditorWindow";
+import Login from "./Login";
 function Home() {
   const [{ user }, dispatch] = useStateValue();
   const [{ userNotes }] = useStateValue([]);
@@ -23,19 +24,28 @@ function Home() {
   }, [user]);
   return (
     <div className="home">
-      
-      <Header />
-      <div className="home__body">
-        <div className="home__sidebar">
-           <Sidebar />
-          
+      {
+         !user ?(
+           <Login />
+         ):(
+           <>
+          <Header />
+          <div className="home__body">
+              <div className="home__sidebar">
+                <Sidebar />
+                
+              </div>
+            
+            <div className="home__editorWindow">
+                <EditorWindow />
+                <h1>HOME PAGE</h1>
+                </div>
         </div>
+        </>
+         )
+         
+      }
       
-       <div className="home__editorWindow">
-          <EditorWindow />
-          <h1>HOME PAGE</h1>
-          </div>
-   </div>
  
     </div>
   );
