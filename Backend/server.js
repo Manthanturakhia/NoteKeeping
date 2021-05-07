@@ -68,7 +68,8 @@ app.post("/login", async (req, res) => {
       console.log("found");
       //req.session.user = result;
       //console.log(req.session.user);
-      res.status(200).send(result);
+      //res.status(200).send(result.data);
+      return res.json(result);
     }
   });
   if (!user) {

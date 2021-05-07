@@ -3,10 +3,11 @@ import axios from "./axios";
 import { Link } from "react-router-dom";
 import { Button, TextField } from "@material-ui/core";
 import "./Login.css";
+import { useStateValue } from "../StateProvider";
 function Login() {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-
+  const [user, dispatch] = useStateValue();
   const login = () => {
     axios
       .post("/login", {
@@ -15,6 +16,11 @@ function Login() {
       })
       .then((res) => {
         alert("logged in");
+        console.log(res.data[0].username);
+        dispatch({
+          type: "SET_USER",
+          user: res.data[0].username,
+        });
       })
       .catch((err) => {
         console.log(err);
