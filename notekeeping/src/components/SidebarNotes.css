@@ -1,0 +1,18 @@
+.sidebarNotes{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    color: red;
+    padding: 10px;
+    border: 2px solid peachpuff;
+    border-radius: 10px;
+    
+}
+
+
+.sidebarNotes__icons > .MuiSvgIcon-root{
+    margin-left: 20px;
+    font-size: 28px;
+    padding-right: 10px;
+}

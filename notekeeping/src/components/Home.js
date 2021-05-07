@@ -3,8 +3,10 @@ import { useStateValue } from "../StateProvider";
 import axios from "./axios";
 import Header from "./Header"
 import Sidebar from "./Sidebar"
+import SidebarNotes from "./SidebarNotes"
 
 import "./Home.css"
+import EditorWindow from "./EditorWindow";
 function Home() {
   const [{ user }, dispatch] = useStateValue();
   const [{ userNotes }] = useStateValue([]);
@@ -23,14 +25,18 @@ function Home() {
     <div className="home">
       
       <Header />
-      <Sidebar />
-      <h1>HOME PAGE</h1>
-
+      <div className="home__body">
+        <div className="home__sidebar">
+           <Sidebar />
+          
+        </div>
       
-
-      {user &&
-          <h1>sdklfhd</h1>
-      }
+       <div className="home__editorWindow">
+          <EditorWindow />
+          <h1>HOME PAGE</h1>
+          </div>
+   </div>
+ 
     </div>
   );
 }
