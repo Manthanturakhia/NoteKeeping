@@ -72,6 +72,7 @@ app.post("/login", async (req, res) => {
       return res.json(result);
     }
   });
+
   if (!user) {
     return res.status(401).send("User not found");
     //return res.json({status:'error', error: 'Invalid username/password'})
@@ -79,5 +80,19 @@ app.post("/login", async (req, res) => {
 });
 
 app.get("/", (req, res) => res.status(200).send("testing"));
+
+app.get("/getNotes", async (req, res) => {
+  const username = req.query.username;
+  console.log("user", username);
+  const notes = "select noteid,title,body from notes where username=?";
+  db.query(notes, [username], (err, result) => {
+    if (result.length > 0) {
+      return res.json(result);
+    } else {
+      console.log(err);
+      res.status(403).send(err);
+    }
+  });
+});
 
 app.listen(port, () => console.log(`listening on ${port}`));
