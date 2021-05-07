@@ -45,19 +45,14 @@ app.post("/register", (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  try {
-    const sqlInsert = "Insert into users values (?,?,?,?)";
-    db.query(sqlInsert, [username, name, email, password], (err, result) => {
-      console.log(result);
-    });
-
-    console.log("user created");
-  } catch (error) {
-    if (error.code === 11000) {
-      return res.json({ status: "error", error: "Username is already in use" });
+  const sqlInsert = "Insert into users values (?,?,?,?)";
+  db.query(sqlInsert, [username, name, email, password], (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(201).send(result);
     }
-    console.log(error.message);
-  }
+  });
 });
 app.post("/login", async (req, res) => {
   const { username, password } = req.body;

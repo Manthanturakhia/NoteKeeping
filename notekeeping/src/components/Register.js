@@ -12,18 +12,21 @@ function Register() {
   const [email, setEmail] = useState("");
 
   const register = () => {
-    axios.post("/register", {
-      name: name,
-      username: username,
-      password: password,
-      email: email,
-    });
-    if (username && email && password) {
-      alert("User Registered");
-    } else {
-      alert("Username/UserType/Password is required");
-    }
-
+    axios
+      .post("/register", {
+        name: name,
+        username: username,
+        password: password,
+        email: email,
+      })
+      .then((res) => {
+        console.log(res.data);
+        alert("user created");
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Username already Exists");
+      });
     setName("");
     setPassword("");
     setUserName("");
