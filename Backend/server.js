@@ -95,4 +95,20 @@ app.get("/getNotes", async (req, res) => {
   });
 });
 
+app.post("/addNotes", (req, res) => {
+  
+  const username = req.body.username;
+  const title = req.body.title;
+  const body = req.body.body;
+  console.log(username)
+  const sqlInsert = "INSERT INTO notes(username, title, body) VALUES (?,?,?)";
+  db.query(sqlInsert, [username,title,body], (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(201).send(result);
+    }
+  });
+});
+
 app.listen(port, () => console.log(`listening on ${port}`));

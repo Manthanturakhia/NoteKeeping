@@ -1,6 +1,7 @@
 export const initialState = {
   user: "rajst",
   userNotes: [],
+  noteAdded: false,
 };
 
 const reducer = (state, action) => {
@@ -16,6 +17,11 @@ const reducer = (state, action) => {
         ...state,
         userNotes: action.userNotes,
       };
+    case "SET_NOTE_ADDED":
+      return{
+        ...state,
+        noteAdded: action.noteAdded,
+      }
     default:
       return state;
   }

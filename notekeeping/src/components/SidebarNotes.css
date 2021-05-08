@@ -7,7 +7,7 @@
     padding: 7px;
     border: 2px solid peachpuff;
     border-radius: 10px;
-    
+    max-height: 65px;
 }
 
 
@@ -15,4 +15,11 @@
     margin-left: 20px;
     font-size: 28px;
     padding-right: 10px;
+}
+
+.sidebarNotes__noteData > h1 {
+    font-size: 14px;
+}
+.sidebarNotes__noteData > p {
+    font-size: 12px;
 }

@@ -8,6 +8,20 @@ import SidebarNotes from './SidebarNotes';
 import NoteModal from './NoteModal';
 function Sidebar() {
     const[{userNotes}] = useStateValue()
+    const [{user,noteAdded}, dispatch] = useStateValue()
+    useEffect(() => {
+        axios.get(`/getNotes?username=${user}`).then((res) => {
+          dispatch({
+            type: "SET_USER_NOTES",
+            userNotes: res.data,
+          });
+          console.log(res);
+        });
+        return () => {
+            
+        }
+      }, [noteAdded]);  
+   
     console.log("notes",userNotes)
     return (
         <div className="sidebar">

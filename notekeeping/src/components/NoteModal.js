@@ -8,11 +8,13 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import EditorWindow from "./EditorWindow"
 import {useStateValue} from "../StateProvider"
+import axios from "./axios"
+
 export default function FormDialog() {
   const [open, setOpen] = React.useState(false);
   const[body,setBody] = useState("")
   const[title,setTitle] = useState("")
-  const[{user},dispatch] = useStateValue()
+  const[{user,noteAdded},dispatch] = useStateValue()
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -20,10 +22,33 @@ export default function FormDialog() {
 
   const handleClose = () => {
     setOpen(false);
+
   };
 
   const addNote = () =>{
-
+    axios
+    .post("/addNotes", {
+     
+      username: user,
+      title: title,
+      body: body,
+    })
+    .then((res) => {
+      console.log(res.data);
+      alert("Note Added");
+      dispatch({
+        type: "SET_NOTE_ADDED",
+        noteAdded: true,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      alert("Something went Wrong Please try Again!");
+    });
+   
+    setTitle("");
+    setBody("");
+    setOpen(false);
   }
 
   return (
@@ -45,7 +70,7 @@ export default function FormDialog() {
             label="Title"
             type="text"
             fullWidth
-            onChange={(e) => setBody(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
           />
           <br />
           <br />
