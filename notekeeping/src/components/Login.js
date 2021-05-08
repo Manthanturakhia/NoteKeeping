@@ -30,7 +30,7 @@ function Login() {
   return (
     <div className="login">
       <div className="login__container">
-        <h1>HR POINTS SYSTEM</h1>
+        <h1>Note Keeping</h1>
         <TextField
           id="standard-basic"
           label="Username"

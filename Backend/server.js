@@ -122,9 +122,43 @@ app.post("/deleteNote", (req, res) => {
     if (err) {
       res.status(500).send(err);
     } else {
-      res.status(201).send(result);
+      res.status(200).send(result);
     }
   });
 });
 
+
+app.get("/getNoteFromId", async (req, res) => {
+  const id = req.query.id;
+  
+  const notes = "select noteid,title,body from notes where noteid=?";
+  db.query(notes, [id], (err, result) => {
+    if (result.length > 0) {
+      return res.json(result);
+    } else {
+
+      console.log(err);
+      res.status(403).send(err);
+    }
+  });
+});
+
+app.post("/updateNoteById", (req, res) => {
+  
+ 
+  const id = req.body.noteid;
+  const title = req.body.title;
+  const body = req.body.body
+  
+  console.log(id)
+  console.log(title)
+  const sqlDelete = "UPDATE notes SET title=?,body=? WHERE noteid=? ";
+  db.query(sqlDelete, [title,body,id], (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(result);
+    }
+  });
+});
 app.listen(port, () => console.log(`listening on ${port}`));

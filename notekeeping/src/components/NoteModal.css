@@ -2,3 +2,16 @@
     height: 100%;
     width: 50px;
 }
+.noteModal__add{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+.noteModal__add > .MuiIconButton-root	{
+    color: white;
+    font-size:28px;
+    margin-left: 20px;
+    font-size: 28px;
+    padding-right: 10px;
+}

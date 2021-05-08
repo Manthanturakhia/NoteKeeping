@@ -2,6 +2,10 @@ export const initialState = {
   user: "rajst",
   userNotes: [],
   noteAdded: false,
+  editTitle:"",
+  editBody:"",
+  noteid:"",
+  noteUpdated: false,
 };
 
 const reducer = (state, action) => {
@@ -21,6 +25,26 @@ const reducer = (state, action) => {
       return{
         ...state,
         noteAdded: action.noteAdded,
+      }
+      case "SET_EDIT_TITLE":
+      return{
+        ...state,
+        editTitle: action.editTitle,
+      }
+      case "SET_EDIT_BODY":
+      return{
+        ...state,
+        editBody: action.editBody,
+      }
+      case "SET_NOTE_ID":
+      return{
+        ...state,
+        noteid: action.noteid,
+      }
+      case "SET_NOTE_UPDATED":
+      return{
+        ...state,
+        noteUpdated: action.noteUpdated,
       }
     default:
       return state;

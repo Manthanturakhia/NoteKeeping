@@ -30,7 +30,7 @@ function Sidebar() {
                 <NoteModal />
                 </div>
                
-                <AddIcon />
+                
             </div>
             {
                     userNotes.map((m) =>(

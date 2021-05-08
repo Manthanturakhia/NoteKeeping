@@ -13,7 +13,11 @@ import NoteModal from "./NoteModal";
 function Home() {
   const [{ user }, dispatch] = useStateValue();
   const [{ userNotes }] = useStateValue([]);
-
+  const[{editTitle,editBody,noteid,noteUpdated}] =useStateValue()
+  // useEffect(() => {
+  //   console.log("props",editTitle)
+    
+  // }, [editTitle,editBody])
   console.log("userrrrr", user);
   useEffect(() => {
     axios.get(`/getNotes?username=${user}`).then((res) => {
@@ -23,7 +27,7 @@ function Home() {
       });
       console.log(res);
     });
-  }, [user]);
+  }, [user,noteUpdated]);
   return (
     <div className="home">
       {
@@ -39,8 +43,8 @@ function Home() {
               </div>
             
             <div className="home__editorWindow">
-                <EditorWindow />
-                <NoteModal />
+            <EditorWindow editTitle={editTitle} editBody={editBody} noteid={noteid}/>
+               
                 </div>
         </div>
        

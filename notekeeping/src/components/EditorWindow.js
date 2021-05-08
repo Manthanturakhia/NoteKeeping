@@ -2,9 +2,30 @@ import { Button, TextField } from '@material-ui/core'
 import React,{useState,useEffect} from 'react'
 import "./EditorWindow.css"
 import {useStateValue} from "../StateProvider"
-function EditorWindow({editTitle,editBody}) {
-    const save = () => {
-            
+import axios from "./axios"
+function EditorWindow({editTitle,editBody,noteid}) {
+    const[{noteUpdated},dispatch] = useStateValue()
+     const save = () => {
+        axios
+        .post("/updateNoteById", {
+          noteid: noteid,
+          title:title,
+          body: body,
+        })
+        .then((res) => {
+          console.log(res.data);
+          alert("Note Updated");
+          dispatch({
+            type: "SET_NOTE_UPDATED",
+            noteUpdated: true,
+          });
+
+        })
+        .catch((err) => {
+          console.log(err);
+          alert("Something went wrong");
+        });
+      
       };
     var [title, setTitle] = useState("")
     var[body,setBody] = useState("")
