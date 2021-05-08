@@ -1,5 +1,6 @@
 export const initialState = {
   user: "rajst",
+  users: [],
   userNotes: [],
   noteAdded: "",
   editTitle:"",
@@ -15,6 +16,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         user: action.user,
+      };
+      case "SET_USERS":
+      return {
+        ...state,
+        users: action.users,
       };
     case "SET_USER_NOTES":
       return {

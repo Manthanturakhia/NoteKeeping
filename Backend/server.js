@@ -161,4 +161,20 @@ app.post("/updateNoteById", (req, res) => {
     }
   });
 });
+
+app.get("/getAllUsers", async (req, res) => {
+  const username = req.query.username;
+  
+  const getUsers = "SELECT * FROM users WHERE username not in (?)";
+  db.query(getUsers, [username], (err, result) => {
+    if (result.length > 0) {
+      return res.json(result);
+    } else {
+
+      console.log(err);
+      res.status(403).send(err);
+    }
+  });
+});
+
 app.listen(port, () => console.log(`listening on ${port}`));

@@ -17,6 +17,17 @@ function Login() {
       .then((res) => {
         alert("logged in");
         console.log(res.data[0].username);
+
+       
+          axios.get(`/getAllUsers?username=${user}`).then((res) => {
+            dispatch({
+              type: "SET_USERS",
+              users: res.data,
+            });
+            console.log("usersss",res.data);
+          });
+        
+
         dispatch({
           type: "SET_USER",
           user: res.data[0].username,
@@ -26,6 +37,10 @@ function Login() {
         console.log(err);
         alert("Invalid");
       });
+
+
+
+
   };
   return (
     <div className="login">

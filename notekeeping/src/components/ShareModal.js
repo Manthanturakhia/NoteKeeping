@@ -12,6 +12,7 @@ import axios from "./axios"
 import ShareIcon from '@material-ui/icons/Share';
 import {IconButton} from '@material-ui/core'
 import UserList from "./UserList"
+import PermissionList from './PermissionsList';
 export default function FormDialog() {
   const [open, setOpen] = React.useState(false);
   
@@ -34,7 +35,7 @@ export default function FormDialog() {
           <ShareIcon />
       </IconButton>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Add Note</DialogTitle>
+        <DialogTitle id="form-dialog-title">Share Note</DialogTitle>
         <DialogContent>
           {/* <DialogContentText>
             To subscribe to this website, please enter your email address here. We will send updates
@@ -44,11 +45,7 @@ export default function FormDialog() {
           <br />
           <br />
           <br />
-           <TextField id="outlined-basic" multiline rows={15}
-                fullWidth="true" label="Note" variant="outlined"
-            style = {{width: 550}} 
-          
-            />
+           <PermissionList />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">

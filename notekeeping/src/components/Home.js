@@ -13,6 +13,7 @@ import NoteModal from "./NoteModal";
 function Home() {
   const [{ user }, dispatch] = useStateValue();
   const [{ userNotes }] = useStateValue([]);
+  const[{users}] =useStateValue([])
   const[{editTitle,editBody,noteid,noteUpdated}] =useStateValue()
   // useEffect(() => {
   //   console.log("props",editTitle)
@@ -28,6 +29,8 @@ function Home() {
       console.log(res);
     });
   }, [user,noteUpdated]);
+  
+
   return (
     <div className="home">
       {
