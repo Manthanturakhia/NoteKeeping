@@ -111,4 +111,20 @@ app.post("/addNotes", (req, res) => {
   });
 });
 
+app.post("/deleteNote", (req, res) => {
+  
+  const username = req.body.username;
+  const id = req.body.id;
+  
+  console.log(username)
+  const sqlDelete = "DELETE FROM notes WHERE username=? AND noteid=? ";
+  db.query(sqlDelete, [username,id], (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(201).send(result);
+    }
+  });
+});
+
 app.listen(port, () => console.log(`listening on ${port}`));
