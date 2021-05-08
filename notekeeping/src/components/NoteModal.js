@@ -41,7 +41,7 @@ export default function FormDialog() {
       alert("Note Added");
       dispatch({
         type: "SET_NOTE_ADDED",
-        noteAdded: true,
+        noteAdded: title,
       });
     })
     .catch((err) => {

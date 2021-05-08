@@ -24,7 +24,7 @@ function SidebarNotes({id,title,body}) {
             alert("Note Deleted");
             dispatch({
                 type: "SET_NOTE_ADDED",
-                noteAdded: true,
+                noteAdded: id,
               });
             })
             .catch((err) => {

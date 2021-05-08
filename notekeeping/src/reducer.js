@@ -1,7 +1,7 @@
 export const initialState = {
   user: "rajst",
   userNotes: [],
-  noteAdded: false,
+  noteAdded: "",
   editTitle:"",
   editBody:"",
   noteid:"",

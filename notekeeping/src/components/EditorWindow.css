@@ -11,9 +11,10 @@
 
  .editorWindow__btn{
      display: flex;
-     align-items: flex-end;
-     justify-content: flex-end;
-     margin-right: 25px;
+     align-items: center;
+     justify-content: center;
+     margin-left: 45px;
+    padding-right: 350px;
  }
 
  .editorWindow__btn > .MuiButton-root{

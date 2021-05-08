@@ -84,7 +84,7 @@ app.get("/", (req, res) => res.status(200).send("testing"));
 app.get("/getNotes", async (req, res) => {
   const username = req.query.username;
   console.log("user", username);
-  const notes = "select noteid,title,body from notes where username=?";
+  const notes = "select noteid,title,body from notes where username=? order by noteid desc";
   db.query(notes, [username], (err, result) => {
     if (result.length > 0) {
       return res.json(result);

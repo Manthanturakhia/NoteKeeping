@@ -8,6 +8,7 @@
     border: 2px solid peachpuff;
     border-radius: 10px;
     max-height: 65px;
+   
 }
 
 
@@ -23,3 +24,7 @@
 .sidebarNotes__noteData > p {
     font-size: 12px;
 }
+.sidebarNotes:hover {
+    opacity: 0.9;
+    background-color: lightyellow;
+  }

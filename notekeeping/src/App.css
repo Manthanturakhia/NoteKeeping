@@ -5,6 +5,7 @@
   overflow: hidden;
   overflow-y: auto;
   align-items: center;
+  overflow:hidden
 }
 .app__container {
   /* display: flex;

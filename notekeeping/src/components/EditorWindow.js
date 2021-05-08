@@ -19,7 +19,7 @@ function EditorWindow({editTitle,editBody,noteid}) {
             type: "SET_NOTE_UPDATED",
             noteUpdated: true,
           });
-
+          
         })
         .catch((err) => {
           console.log(err);
@@ -27,6 +27,7 @@ function EditorWindow({editTitle,editBody,noteid}) {
         });
       
       };
+     
     var [title, setTitle] = useState("")
     var[body,setBody] = useState("")
       
@@ -55,9 +56,7 @@ function EditorWindow({editTitle,editBody,noteid}) {
              <Button variant="contained" color="primary" onClick={save} >
                  Save
              </Button>
-             <Button variant="contained" color="primary">
-                 Discard
-             </Button>
+             
              </div>
              
         </div>
