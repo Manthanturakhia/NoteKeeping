@@ -7,6 +7,8 @@ export const initialState = {
   editBody:"",
   noteid:"",
   noteUpdated: false,
+  susername:"",
+  access:"",
 };
 
 const reducer = (state, action) => {
@@ -46,6 +48,16 @@ const reducer = (state, action) => {
       return{
         ...state,
         noteid: action.noteid,
+      }
+      case "SET_SUSERNAME":
+      return{
+        ...state,
+        susername: action.susername,
+      }
+      case "SET_ACCESS":
+      return{
+        ...state,
+        access: action.access,
       }
       case "SET_NOTE_UPDATED":
       return{

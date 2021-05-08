@@ -10,7 +10,7 @@ import ShareModal from "./ShareModal"
 function SidebarNotes({id,title,body}) {
     const [{user,noteAdded,editTitle,editBody}, dispatch] = useStateValue()
     
-   var body1 = body.substr(0,22)
+   var body1 = body.substr(0,30)
    var title1 = title.substr(0,22)
    const deleteNote = () => {
             axios
@@ -70,7 +70,7 @@ function SidebarNotes({id,title,body}) {
             
             <div className="sidebarNotes__icons">
             <IconButton onClick={editNote}> <EditIcon /> </IconButton>
-                <IconButton><ShareModal /> </IconButton>
+                <IconButton><ShareModal id={id}/> </IconButton>
                 <IconButton onClick={deleteNote}> <DeleteIcon /> </IconButton>
                 
             </div>

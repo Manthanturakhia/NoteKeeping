@@ -13,9 +13,11 @@ import ShareIcon from '@material-ui/icons/Share';
 import {IconButton} from '@material-ui/core'
 import UserList from "./UserList"
 import PermissionList from './PermissionsList';
-export default function FormDialog() {
+
+export default function ShareModal({id}) {
   const [open, setOpen] = React.useState(false);
-  
+  const[{user}] = useStateValue()
+  const[{access,noteid,susername}] = useStateValue()
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -26,7 +28,24 @@ export default function FormDialog() {
 
   };
   
- 
+  const setPermission= () => {
+    axios
+      .post("/setAccess", {
+        noteid: id,
+        susername: susername,
+        ousername: user,
+        access: access,
+        
+      })
+      .then((res) => {
+        console.log(res.data);
+        alert("set permission");
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Something went wrong");
+      });
+  }
 
   return (
     <div>
@@ -51,7 +70,7 @@ export default function FormDialog() {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button color="primary">
+          <Button color="primary" onClick={setPermission}>
             Add
           </Button>
         </DialogActions>

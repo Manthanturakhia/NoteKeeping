@@ -6,6 +6,8 @@
   .editorWindow{
       height: 100vh;
       margin-top: 10px;
+      padding-bottom:10px;
+      background-color: #f8f8f8;
  
   }
 

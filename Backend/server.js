@@ -177,4 +177,26 @@ app.get("/getAllUsers", async (req, res) => {
   });
 });
 
+
+app.post("/setAccess", (req, res) => {
+  
+ 
+  const noteid = req.body.noteid;
+  const susername = req.body.susername;
+  const ousername = req.body.ousername;
+  const access = req.body.access;
+  console.log(noteid,susername,ousername,access)
+  const setAccess = "INSERT INTO permissions(noteid, susername, ousername, access) VALUES (?,?,?,?)";
+  db.query(setAccess, [noteid,susername,ousername,access], (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+      console.log(err)
+    } else {
+      res.status(200).send(result);
+      
+    }
+  });
+});
+
+
 app.listen(port, () => console.log(`listening on ${port}`));

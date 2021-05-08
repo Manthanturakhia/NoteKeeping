@@ -21,20 +21,21 @@ function App() {
           </Route>
           <Route path="/">
             <div className="app__container">
+              
               <h1 align="center">Note Keeping</h1>
               {/* <div className="app__button"> */}
               <Link to="/login">
                 {/* <Button  variant="contained" >
                 LOGIN
                 </Button> */}
-                <Button variant="contained" color="primary">
+                <Button variant="contained"  color="primary">
                   Login
                 </Button>
               </Link>
               <br />
               <br />
               <Link to="/register">
-                <Button variant="contained" color="primary">
+                <Button variant="contained" color="primary" >
                   Register
                 </Button>
               </Link>

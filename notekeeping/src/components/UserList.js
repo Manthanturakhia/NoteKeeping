@@ -5,6 +5,7 @@ import {useStateValue} from "../StateProvider"
 export default function UserList() {
     const[suser,setSuser] = useState()
     const[{users}] = useStateValue([])
+    const[{susername}, dispatch] =useStateValue()
     console.log("user list",users)
     const data=[]
     users.map((m) => {
@@ -18,7 +19,10 @@ export default function UserList() {
       options={data}
       //getOptionLabel={(data) => data}
       style={{ width: 300 }}
-      onInputChange={(e,v) => setSuser(v)}
+      onInputChange={(e,v) => dispatch({
+        type: "SET_SUSERNAME",
+        susername: v,
+      })}
       renderInput={(params) => <TextField {...params} label="Users" variant="outlined" />}
     />
 
