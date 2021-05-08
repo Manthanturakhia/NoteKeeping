@@ -9,6 +9,7 @@ import "./Home.css"
 import EditorWindow from "./EditorWindow";
 import Login from "./Login";
 import { Button } from "@material-ui/core";
+import NoteModal from "./NoteModal";
 function Home() {
   const [{ user }, dispatch] = useStateValue();
   const [{ userNotes }] = useStateValue([]);
@@ -39,7 +40,7 @@ function Home() {
             
             <div className="home__editorWindow">
                 <EditorWindow />
-             
+                <NoteModal />
                 </div>
         </div>
        

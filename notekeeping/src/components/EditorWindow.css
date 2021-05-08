@@ -4,7 +4,9 @@
     
   }
   .editorWindow{
-      margin-top: 25px;
+      height: 100vh;
+      margin-top: 10px;
+ 
   }
 
  .editorWindow__btn{

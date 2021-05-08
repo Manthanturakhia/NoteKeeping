@@ -13,9 +13,7 @@ function Sidebar() {
         <div className="sidebar">
             <div className="sidebar__header">
                 <div className="sidebar__addbtn">
-                <Button >Add Note</Button>
-                <Button onClick={this.handleClick} />
-                  {this.state.clicked ? <NoteModal /> : null}
+                <NoteModal />
                 </div>
                
                 <AddIcon />

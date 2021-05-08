@@ -11,11 +11,11 @@ function EditorWindow() {
         <div className="editorWindow">
            
             <TextField id="outlined-basic" fullWidth="true" label="Title" variant="outlined"
-            style = {{width: 1150}} 
+            style = {{width: 850}} 
             onChange={(e) => setTitle(e.target.value)}/>
             <TextField id="outlined-basic" multiline rows={25}
                 fullWidth="true" label="Note" variant="outlined"
-            style = {{width: 1150}} 
+            style = {{width: 850}} 
             onChange={(e) => setBody(e.target.value)}
             />
             <div className="editorWindow__btn">
