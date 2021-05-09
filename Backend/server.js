@@ -18,20 +18,23 @@ app.use(
 
 //app.use(cookieParser);
 app.use(express.json());
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
-/*app.use(
-  session({
-    key: "userId",
-    secret: "secretkey",
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      expires: 60 * 60 * 24,
-    },
-  })
-);
-*/
+// app.use(
+//   session({
+//     key: "userId",
+//     secret: "secretkey",
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: {
+//       expires: 60 * 60 * 24,
+//     },
+//   })
+// );
+
+
+
 const db = mysql.createPool({
   host: "localhost",
   user: "root",
@@ -88,6 +91,7 @@ app.get("/getNotes", async (req, res) => {
   db.query(notes, [username], (err, result) => {
     if (result.length > 0) {
       return res.json(result);
+      console.log("get Notes")
     } else {
       console.log(err);
       res.status(403).send(err);
@@ -107,6 +111,7 @@ app.post("/addNotes", (req, res) => {
       res.status(500).send(err);
     } else {
       res.status(201).send(result);
+      console.log("Add Notes")
     }
   });
 });
@@ -135,6 +140,7 @@ app.get("/getNoteFromId", async (req, res) => {
   db.query(notes, [id], (err, result) => {
     if (result.length > 0) {
       return res.json(result);
+      console.log("get Note fromID")
     } else {
 
       console.log(err);
@@ -156,6 +162,7 @@ app.post("/updateNoteById", (req, res) => {
   db.query(sqlDelete, [title,body,id], (err, result) => {
     if (err) {
       res.status(500).send(err);
+      console.log("update note by id")
     } else {
       res.status(200).send(result);
     }
@@ -192,7 +199,7 @@ app.post("/setAccess", (req, res) => {
       console.log(err)
     } else {
       res.status(200).send(result);
-      
+      console.log("set access")
     }
   });
 });
@@ -203,6 +210,7 @@ app.get("/getContributorDetails", async (req, res) => {
   const getUsers = "select DISTINCT(n.noteid), n.title,n.body,p.* from permissions p, notes n where p.access=? and susername in (select username from users where username=?) AND p.noteid=n.noteid GROUP by n.noteid";
   db.query(getUsers, [access,username], (err, result) => {
     if (result.length > 0) {
+      console.log("get conntri")
       return res.json(result);
     } else {
 
@@ -217,8 +225,9 @@ app.get("/getReaderDetails", async (req, res) => {
   const getUsers = "select DISTINCT(n.noteid), n.title,n.body,p.* from permissions p, notes n where p.access=? and susername in (select username from users where username=?) AND p.noteid=n.noteid GROUP by n.noteid";
   db.query(getUsers, [access,username], (err, result) => {
     if (result.length > 0) {
+
       return res.json(result);
-      console.log(result)
+      console.log("get readers")
     } else {
 
       console.log(err);
@@ -227,5 +236,37 @@ app.get("/getReaderDetails", async (req, res) => {
   });
 });
 
+app.get("/getNotePermissionDetails", async (req, res) => {
+  const username = req.query.username;
+  console.log(username)
+  const getUsers = "select * from permissions WHERE ousername=?";
+  db.query(getUsers, [username], (err, result) => {
+    if (result.length > 0) {
+      return res.json(result);
+      console.log("get note permissions")
+    } else {
+
+      console.log(err);
+      res.status(403).send(err);
+    }
+  });
+});
+
+app.post("/RevokeAccess", (req, res) => {
+  
+  
+  const sno = req.body.sno;
+  
+
+  const sqlDelete = "DELETE FROM permissions WHERE sno=? ";
+  db.query(sqlDelete, [sno], (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(result);
+      console.log("revoke access  ")
+    }
+  });
+});
 
 app.listen(port, () => console.log(`listening on ${port}`));

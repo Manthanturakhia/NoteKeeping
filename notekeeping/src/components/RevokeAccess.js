@@ -14,8 +14,9 @@ import AddIcon from '@material-ui/icons/Add';
 import "./NoteModal.css";
 
 import FormatListBulletedOutlinedIcon from '@material-ui/icons/FormatListBulletedOutlined';
+import RevokeUsersTable from './RevokeUsersTable';
 
-export default function RevokeAccess({title,body}) {
+export default function RevokeAccess({id}) {
   const [open, setOpen] = React.useState(false);
 //   const[body,setBody] = useState("")
 //   const[title,setTitle] = useState("")
@@ -29,10 +30,6 @@ export default function RevokeAccess({title,body}) {
     setOpen(false);
 
   };
-  const viewData=() =>{
-    
-  
-}
   
   return (
     <div className="noteModal">
@@ -45,28 +42,11 @@ export default function RevokeAccess({title,body}) {
      
       
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Note</DialogTitle>
+        <DialogTitle id="form-dialog-title">Revoke Access</DialogTitle>
         <DialogContent>
+          <RevokeUsersTable id={id} />
           
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="Title"
-            type="text"
-            fullWidth
-            value={title}
-            
-          />
-          <br />
-          <br />
-          <br />
-           <TextField id="outlined-basic" multiline rows={15}
-                fullWidth="true" label="Note" variant="outlined"
-            style = {{width: 550}} 
-            value={body}
-            />
-        </DialogContent>
+        </DialogContent> 
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Close
