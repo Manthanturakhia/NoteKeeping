@@ -33,8 +33,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //   })
 // );
 
-
-
 const db = mysql.createPool({
   host: "localhost",
   user: "root",

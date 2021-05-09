@@ -3,8 +3,6 @@ import { useStateValue } from "../StateProvider";
 import axios from "./axios";
 import Header from "./Header"
 import Sidebar from "./Sidebar"
-import SidebarNotes from "./SidebarNotes"
-
 import "./Home.css"
 import EditorWindow from "./EditorWindow";
 import Login from "./Login";

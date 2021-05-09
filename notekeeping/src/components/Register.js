@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, InputLabel, TextField } from "@material-ui/core";
 
 import axios from "./axios";
-import Login from "./Login";
+
 import { Link } from "react-router-dom";
 import "./Register.css";
 function Register() {
