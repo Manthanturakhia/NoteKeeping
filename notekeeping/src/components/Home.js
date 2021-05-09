@@ -12,6 +12,7 @@ import { Button } from "@material-ui/core";
 import NoteModal from "./NoteModal";
 function Home() {
   const [{ user }, dispatch] = useStateValue();
+  const[{contributorList}] = useStateValue()
   const [{ userNotes }] = useStateValue([]);
   const[{users}] =useStateValue([])
   const[{editTitle,editBody,noteid,noteUpdated}] =useStateValue()
@@ -29,7 +30,16 @@ function Home() {
       console.log(res);
     });
   }, [user,noteUpdated]);
-  
+  useEffect(() => {
+    axios.get(`/getContributorDetails?username=${user}`).then((res) => {
+      console.log("contributpr",res)
+      dispatch({
+        type: "SET_CONTRIBUTOR_LIST",
+        contributorList: res.data,
+      });
+      console.log("etst",res.data);
+    });
+  }, [user,noteUpdated]);
 
   return (
     <div className="home">

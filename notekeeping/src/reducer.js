@@ -1,5 +1,5 @@
 export const initialState = {
-  user: "rajst",
+  user: "",
   users: [],
   userNotes: [],
   noteAdded: "",
@@ -9,6 +9,8 @@ export const initialState = {
   noteUpdated: false,
   susername:"",
   access:"",
+  contributorList:[],
+
 };
 
 const reducer = (state, action) => {
@@ -63,6 +65,11 @@ const reducer = (state, action) => {
       return{
         ...state,
         noteUpdated: action.noteUpdated,
+      }
+      case "SET_CONTRIBUTOR_LIST":
+      return{
+        ...state,
+        contributorList: action.contributorList,
       }
     default:
       return state;

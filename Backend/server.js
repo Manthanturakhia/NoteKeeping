@@ -198,10 +198,10 @@ app.post("/setAccess", (req, res) => {
 });
 
 app.get("/getContributorDetails", async (req, res) => {
-  const susername = req.query.username;
-  
-  const getUsers = "select * from permissions where access=Contributor and ? in (select username from users)";
-  db.query(getUsers, [susername], (err, result) => {
+  const username = req.query.username;
+  const access='Contributor'
+  const getUsers = "select DISTINCT(n.noteid), n.title,n.body,p.* from permissions p, notes n where p.access=? and susername in (select username from users where username=?) AND p.noteid=n.noteid GROUP by n.noteid";
+  db.query(getUsers, [access,username], (err, result) => {
     if (result.length > 0) {
       return res.json(result);
     } else {
