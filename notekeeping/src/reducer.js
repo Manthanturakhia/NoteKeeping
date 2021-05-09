@@ -1,5 +1,5 @@
 export const initialState = {
-  user: "manthanst",
+  user: "",
   users: [],
   userNotes: [],
   noteAdded: "",
@@ -11,6 +11,9 @@ export const initialState = {
   access:"",
   contributorList:[],
   readerList:[],
+  notePermissions:[],
+  revoke:"",
+  setNotePermission:"",
 };
 
 const reducer = (state, action) => {
@@ -77,6 +80,21 @@ const reducer = (state, action) => {
         ...state,
         readerList: action.readerList,
       }
+      case "SET_NOTE_PERMISSION_DETAILS":
+        return{
+          ...state,
+          notePermissions: action.notePermissions,
+        }
+        case "SET_REVOKE":
+        return{
+          ...state,
+          revoke: action.revoke,
+        }
+        case "SET_PERMISSION":
+        return{
+          ...state,
+          setNotePermission: action.setNotePermission,
+        }
     default:
       return state;
   }

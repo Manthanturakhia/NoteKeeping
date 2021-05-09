@@ -20,7 +20,7 @@ export default function ShareModal({id}) {
   const [open, setOpen] = React.useState(false);
   const[{user}] = useStateValue()
   const[{access,noteid,susername}] = useStateValue()
-
+const[{setNotePermission},dispatch] =useStateValue()
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -41,8 +41,12 @@ export default function ShareModal({id}) {
       })
       .then((res) => {
         console.log(res.data);
+        dispatch({
+            type: "SET_PERMISSION",
+            setNotePermission: res.data,
+          });
         setOpen(false);
-        alert("set permission");
+        
       })
       .catch((err) => {
         console.log(err);

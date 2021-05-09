@@ -18,7 +18,7 @@ import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
 export default function ViewModal({title,body}) {
   const [open, setOpen] = React.useState(false);
 
-  const[{user,noteAdded},dispatch] = useStateValue()
+//   const[{user,noteAdded},dispatch] = useStateValue()
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -28,17 +28,14 @@ export default function ViewModal({title,body}) {
     setOpen(false);
 
   };
-  const viewData=() =>{
-    
-  
-}
+ 
   
   return (
     <div className="noteModal">
       
       <div className="noteModal__add"> 
       
-      <IconButton onClick={handleClickOpen}> <VisibilityOutlinedIcon onCLick={viewData} /></IconButton></div>
+      <IconButton onClick={handleClickOpen}> <VisibilityOutlinedIcon  /></IconButton></div>
      
       
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">

@@ -11,8 +11,8 @@ import RevokeAccess from "./RevokeAccess"
 function SidebarNotes({id,title,body}) {
     const [{user,noteAdded,editTitle,editBody}, dispatch] = useStateValue()
     
-   var body1 = body.substr(0,20)
-   var title1 = title.substr(0,15)
+   var body1 = body.substr(0,10)
+   var title1 = title.substr(0,5)
    const deleteNote = () => {
             axios
             .post("/deleteNote", {
@@ -70,7 +70,7 @@ function SidebarNotes({id,title,body}) {
             </div>
             
             <div className="sidebarNotes__icons">
-            {/* <IconButton> <RevokeAccess /> </IconButton>  */}
+            <IconButton> <RevokeAccess id={id}/> </IconButton>  
             <IconButton onClick={editNote}> <EditIcon /> </IconButton>
                 <IconButton><ShareModal id={id}/> </IconButton>
                 <IconButton onClick={deleteNote}> <DeleteIcon /> </IconButton>

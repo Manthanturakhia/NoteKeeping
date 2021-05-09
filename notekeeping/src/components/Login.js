@@ -15,7 +15,7 @@ function Login() {
         password: password,
       })
       .then((res) => {
-        alert("logged in");
+        
         console.log(res.data[0].username);
 
        
@@ -35,7 +35,7 @@ function Login() {
       })
       .catch((err) => {
         console.log(err);
-        alert("Invalid");
+        alert("Invalid username/password");
       });
 
 

@@ -13,13 +13,15 @@ import NoteModal from "./NoteModal";
 function Home() {
   const [{ user }, dispatch] = useStateValue();
   const[{contributorList}] = useStateValue()
-  const [{ userNotes }] = useStateValue([]);
+  const[{notePermissions}] = useStateValue()
+  const[{noteAdded}] = useStateValue()
+  const [{revoke}] = useStateValue();
   const[{users}] =useStateValue([])
   const[{editTitle,editBody,noteid,noteUpdated}] =useStateValue()
- 
+ const[{setNotePermission}] = useStateValue()
   console.log("userrrrr", user);
-  useEffect(() => {
-    axios.get(`/getNotes?username=${user}`).then((res) => {
+  useEffect( () => {
+     axios.get(`/getNotes?username=${user}`).then((res) => {
       dispatch({
         type: "SET_USER_NOTES",
         userNotes: res.data,
@@ -28,7 +30,7 @@ function Home() {
     });
   }, [user,noteUpdated]);
   useEffect(() => {
-    axios.get(`/getContributorDetails?username=${user}`).then((res) => {
+     axios.get(`/getContributorDetails?username=${user}`).then((res) => {
       console.log("contributpr",res)
       dispatch({
         type: "SET_CONTRIBUTOR_LIST",
@@ -36,20 +38,31 @@ function Home() {
       });
       console.log("etst",res.data);
     });
-  }, [user,noteUpdated]);
+  }, [user,noteUpdated,revoke,setNotePermission]);
 
+  
   useEffect(() => {
-    axios.get(`/getReaderDetails?username=${user}`).then((res) => {
+   axios.get(`/getReaderDetails?username=${user}`).then((res) => {
       console.log("reader",res)
       dispatch({
         type: "SET_READER_LIST",
         readerList: res.data,
       });
+     console.log("permissions",res)
+    });
+  }, [user,noteUpdated,revoke,setNotePermission]);
+
+  useEffect(() => {
+    axios.get(`/getNotePermissionDetails?username=${user}`).then((res) => {
+      console.log("get note per",res)
+      dispatch({
+        type: "SET_NOTE_PERMISSION_DETAILS",
+        notePermissions: res.data,
+      });
       console.log("etst",res.data);
     });
-  }, [user,noteUpdated]);
-
-  
+    
+  }, [user,noteUpdated,revoke,setNotePermission]);
   return (
     <div className="home">
       {
