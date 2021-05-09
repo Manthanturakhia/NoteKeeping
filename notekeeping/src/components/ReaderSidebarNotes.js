@@ -25,9 +25,7 @@ function ReaderSidebarNotes({id,title,body,owner}) {
             </div>
             
             <div className="sidebarNotes__icons">
-            {/* <IconButton onClick={editNote}> <EditIcon /> </IconButton> */}
-            
-                
+          
                 <ViewModal title={title} body={body}/>
                 
             </div>

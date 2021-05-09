@@ -33,9 +33,7 @@ export default function RevokeAccess({id}) {
   
   return (
     <div className="noteModal">
-      {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Add Note
-      </Button> */}
+     
       <div className="noteModal__add"> 
       
       <IconButton onClick={handleClickOpen}> <FormatListBulletedOutlinedIcon/> </IconButton></div>

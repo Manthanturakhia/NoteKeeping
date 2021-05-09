@@ -17,15 +17,7 @@ function Header() {
             <div className="header__right">
                 <h3>{user}</h3><AccountCircleIcon />
             </div>
-        {/* <AppBar position="static">
-            <Toolbar>
-                
-                <Typography variant="h6">
-                     Note Taking 
-                </Typography>
-                <AccountCircleIcon />
-            </Toolbar>
-        </AppBar> */}
+        
         </div>
     )
 }

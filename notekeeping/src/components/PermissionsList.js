@@ -14,7 +14,7 @@ export default function PermissionList() {
     <Autocomplete
       id="combo-box-demo"
       options={data}
-      //getOptionLabel={(data) => data}
+    
       style={{ width: 300 }}
       onInputChange={(e,v) => dispatch({
         type: "SET_ACCESS",

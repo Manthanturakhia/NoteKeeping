@@ -56,9 +56,7 @@ export default function FormDialog() {
 
   return (
     <div className="noteModal">
-      {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Add Note
-      </Button> */}
+      
       <div className="noteModal__add"> <h2>Add Note</h2>
       <IconButton onClick={handleClickOpen}> <AddIcon /></IconButton></div>
      

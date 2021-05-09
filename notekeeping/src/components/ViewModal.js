@@ -18,7 +18,7 @@ import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
 export default function ViewModal({title,body}) {
   const [open, setOpen] = React.useState(false);
 
-//   const[{user,noteAdded},dispatch] = useStateValue()
+
 
   const handleClickOpen = () => {
     setOpen(true);

@@ -55,10 +55,7 @@ function SidebarNotes({id,title,body}) {
               });
             console.log("ampp",m.body)
         })
-        // dispatch({
-        //   type: "SET_USER_NOTES",
-        //   userNotes: res.data,
-        // });
+     
         console.log(res);
       });
    }

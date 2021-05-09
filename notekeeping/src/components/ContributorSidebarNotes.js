@@ -1,12 +1,11 @@
 import React,{useState} from 'react'
 import "./SidebarNotes.css"
-import DeleteIcon from '@material-ui/icons/Delete';
 
 import { IconButton } from '@material-ui/core';
 import axios from "./axios"
 import {useStateValue} from "../StateProvider"
 import EditIcon from '@material-ui/icons/Edit';
-import ShareModal from "./ShareModal"
+
 
 import "./ContributorSidebarNotes.css"
 function ContributorSidebarNotes({id,title,body,owner}) {
