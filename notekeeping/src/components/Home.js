@@ -16,10 +16,7 @@ function Home() {
   const [{ userNotes }] = useStateValue([]);
   const[{users}] =useStateValue([])
   const[{editTitle,editBody,noteid,noteUpdated}] =useStateValue()
-  // useEffect(() => {
-  //   console.log("props",editTitle)
-    
-  // }, [editTitle,editBody])
+ 
   console.log("userrrrr", user);
   useEffect(() => {
     axios.get(`/getNotes?username=${user}`).then((res) => {
@@ -41,6 +38,18 @@ function Home() {
     });
   }, [user,noteUpdated]);
 
+  useEffect(() => {
+    axios.get(`/getReaderDetails?username=${user}`).then((res) => {
+      console.log("reader",res)
+      dispatch({
+        type: "SET_READER_LIST",
+        readerList: res.data,
+      });
+      console.log("etst",res.data);
+    });
+  }, [user,noteUpdated]);
+
+  
   return (
     <div className="home">
       {

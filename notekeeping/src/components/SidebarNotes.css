@@ -3,12 +3,12 @@
     justify-content: space-between;
     align-items: center;
     background-color:#FCF3CF;
-    color: red;
+    color:#D35400;
     padding: 7px;
     border: 2px solid white;
     border-radius: 10px;
     max-height: 65px;
-    height: 45px;
+    height: 65px;
    
 }
 

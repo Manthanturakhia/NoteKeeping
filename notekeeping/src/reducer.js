@@ -10,7 +10,7 @@ export const initialState = {
   susername:"",
   access:"",
   contributorList:[],
-
+  readerList:[],
 };
 
 const reducer = (state, action) => {
@@ -70,6 +70,12 @@ const reducer = (state, action) => {
       return{
         ...state,
         contributorList: action.contributorList,
+      }
+
+      case "SET_READER_LIST":
+      return{
+        ...state,
+        readerList: action.readerList,
       }
     default:
       return state;

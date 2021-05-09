@@ -14,6 +14,8 @@ import {IconButton} from '@material-ui/core'
 import UserList from "./UserList"
 import PermissionList from './PermissionsList';
 import "./ShareModal.css"
+import NearMeOutlinedIcon from '@material-ui/icons/NearMeOutlined';
+
 export default function ShareModal({id}) {
   const [open, setOpen] = React.useState(false);
   const[{user}] = useStateValue()
@@ -49,7 +51,9 @@ export default function ShareModal({id}) {
 
   return (
     <div className="shareModal">
+        
      <div className="shareModal__icon">
+        
       <IconButton onClick={handleClickOpen}>
           <ShareIcon />
       </IconButton>

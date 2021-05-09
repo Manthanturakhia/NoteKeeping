@@ -211,6 +211,21 @@ app.get("/getContributorDetails", async (req, res) => {
     }
   });
 });
+app.get("/getReaderDetails", async (req, res) => {
+  const username = req.query.username;
+  const access='Reader'
+  const getUsers = "select DISTINCT(n.noteid), n.title,n.body,p.* from permissions p, notes n where p.access=? and susername in (select username from users where username=?) AND p.noteid=n.noteid GROUP by n.noteid";
+  db.query(getUsers, [access,username], (err, result) => {
+    if (result.length > 0) {
+      return res.json(result);
+      console.log(result)
+    } else {
+
+      console.log(err);
+      res.status(403).send(err);
+    }
+  });
+});
 
 
 app.listen(port, () => console.log(`listening on ${port}`));

@@ -7,9 +7,12 @@ import axios from "./axios"
 import SidebarNotes from './SidebarNotes';
 import NoteModal from './NoteModal';
 import ContributorSidebarNotes from './ContributorSidebarNotes'
+import ReaderSidebarNotes from './ReaderSidebarNotes';
+
 function Sidebar() {
     const[{userNotes}] = useStateValue()
     const[{contributorList}] = useStateValue()
+    const[{readerList}] = useStateValue()
     const [{user,noteAdded}, dispatch] = useStateValue()
     useEffect(() => {
         axios.get(`/getNotes?username=${user}`).then((res) => {
@@ -50,7 +53,13 @@ function Sidebar() {
              {
                   contributorList.map((m) =>(
                     //<h1>{m.noteid}</h1>
-                    <ContributorSidebarNotes id={m.noteid} title={m.title} body={m.body} />
+                    <ContributorSidebarNotes id={m.noteid} title={m.title} body={m.body} owner={m.ousername}/>
+                ))
+             }
+             {
+                  readerList.map((m) =>(
+                    //<h1>{m.noteid}</h1>
+                    <ReaderSidebarNotes id={m.noteid} title={m.title} body={m.body} owner={m.ousername} />
                 ))
              }
             </div>

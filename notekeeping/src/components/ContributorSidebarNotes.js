@@ -7,7 +7,9 @@ import axios from "./axios"
 import {useStateValue} from "../StateProvider"
 import EditIcon from '@material-ui/icons/Edit';
 import ShareModal from "./ShareModal"
-function ContributorSidebarNotes({id,title,body}) {
+
+import "./ContributorSidebarNotes.css"
+function ContributorSidebarNotes({id,title,body,owner}) {
     const [{user,noteAdded,editTitle,editBody}, dispatch] = useStateValue()
     
    var body1 = body.substr(0,30)
@@ -44,11 +46,16 @@ function ContributorSidebarNotes({id,title,body}) {
     return (
         <div className="sidebarNotes">
            <div className="sidebarNotes__noteData">
+                
+               <h5>{owner}</h5>
                 <h1>{title}</h1>
                 <p>{body1}</p>
+               
+                
             </div>
             
             <div className="sidebarNotes__icons">
+            
             <IconButton onClick={editNote}> <EditIcon /> </IconButton>
                
                 
