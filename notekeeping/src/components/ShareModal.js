@@ -13,7 +13,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import {IconButton} from '@material-ui/core'
 import UserList from "./UserList"
 import PermissionList from './PermissionsList';
-
+import "./ShareModal.css"
 export default function ShareModal({id}) {
   const [open, setOpen] = React.useState(false);
   const[{user}] = useStateValue()
@@ -48,11 +48,12 @@ export default function ShareModal({id}) {
   }
 
   return (
-    <div>
-     
+    <div className="shareModal">
+     <div className="shareModal__icon">
       <IconButton onClick={handleClickOpen}>
           <ShareIcon />
       </IconButton>
+      </div>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Share Note</DialogTitle>
         <DialogContent>

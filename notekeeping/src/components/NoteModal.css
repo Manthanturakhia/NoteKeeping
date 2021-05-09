@@ -6,10 +6,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: white;
+    color: #D35400;
 }
 .noteModal__add > .MuiIconButton-root	{
-    color: white;
+    color: #D35400;
     font-size:28px;
     margin-left: 20px;
     font-size: 28px;

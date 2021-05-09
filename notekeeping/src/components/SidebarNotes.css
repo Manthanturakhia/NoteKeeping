@@ -2,10 +2,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color:orange;
+    background-color:#FCF3CF;
     color: red;
     padding: 7px;
-    border: 2px solid #f8f8f8;
+    border: 2px solid white;
     border-radius: 10px;
     max-height: 65px;
     height: 45px;
@@ -21,15 +21,18 @@
 
 .sidebarNotes__noteData > h1 {
     font-size: 18px;
-    color:white;
+    color:#D35400;
 }
 .sidebarNotes__noteData > p {
     font-size: 12px;
-    color: white;
+    color: #D35400;
 }
 .sidebarNotes:hover {
     opacity: 0.9;
-    background-color:#CD6155;
+    background-color:#F8C471;
     
   }
- 
+  .sidebarNotes__icons > .MuiIconButton-root	{
+    color: #D35400;
+   
+}
