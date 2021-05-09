@@ -180,7 +180,6 @@ app.get("/getAllUsers", async (req, res) => {
 
 app.post("/setAccess", (req, res) => {
   
- 
   const noteid = req.body.noteid;
   const susername = req.body.susername;
   const ousername = req.body.ousername;
@@ -194,6 +193,21 @@ app.post("/setAccess", (req, res) => {
     } else {
       res.status(200).send(result);
       
+    }
+  });
+});
+
+app.get("/getContributorDetails", async (req, res) => {
+  const susername = req.query.username;
+  
+  const getUsers = "select * from permissions where access=Contributor and ? in (select username from users)";
+  db.query(getUsers, [susername], (err, result) => {
+    if (result.length > 0) {
+      return res.json(result);
+    } else {
+
+      console.log(err);
+      res.status(403).send(err);
     }
   });
 });
