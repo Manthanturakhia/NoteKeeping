@@ -41,6 +41,7 @@ export default function ShareModal({id}) {
       })
       .then((res) => {
         console.log(res.data);
+        setOpen(false);
         alert("set permission");
       })
       .catch((err) => {

@@ -8,7 +8,8 @@
     border: 2px solid white;
     border-radius: 10px;
     max-height: 65px;
-    height: 65px;
+    height: 75px;
+
    
 }
 
@@ -16,7 +17,8 @@
 .sidebarNotes__icons > .MuiSvgIcon-root{
     margin-left: 20px;
     font-size: 28px;
-    padding-right: 10px;
+    padding-right: 8px;
+   
 }
 
 .sidebarNotes__noteData > h1 {

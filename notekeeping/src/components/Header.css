@@ -23,5 +23,9 @@
 .header__right{
     padding-right:50px ;
     align-items: center;
-    
+    display: flex;
+    margin-left: 25px;
+}
+.header__right > h3{
+    margin-right: 25px;
 }

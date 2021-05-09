@@ -15,32 +15,7 @@ function ReaderSidebarNotes({id,title,body,owner}) {
   
    const[newBody,setBody] = useState("")
    const[newTitle,setTitle] = useState("")
-// //    const editNote = () => {
-// //     axios.get(`/getNoteFromId?id=${id}`).then((res) => {
-        
-// //         console.log("data",res.data)
-// //         res.data.map((m)=>{
-// //             dispatch({
-// //                 type: "SET_EDIT_TITLE",
-// //                 editTitle: m.title,
-// //               });
-// //               dispatch({
-// //                 type: "SET_EDIT_BODY",
-// //                 editBody: m.body,
-// //               });
-// //               dispatch({
-// //                 type: "SET_NOTE_ID",
-// //                 noteid: m.noteid,
-// //               });
-// //             console.log("ampp",m.body)
-// //         })
-// //         // dispatch({
-//         //   type: "SET_USER_NOTES",
-//         //   userNotes: res.data,
-//         // });
-//         console.log(res);
-//       });
-  // }
+
     return (
         <div className="sidebarNotes">
            <div className="sidebarNotes__noteData">

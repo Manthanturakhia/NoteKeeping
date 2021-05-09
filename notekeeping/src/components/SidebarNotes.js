@@ -7,11 +7,12 @@ import axios from "./axios"
 import {useStateValue} from "../StateProvider"
 import EditIcon from '@material-ui/icons/Edit';
 import ShareModal from "./ShareModal"
+import RevokeAccess from "./RevokeAccess"
 function SidebarNotes({id,title,body}) {
     const [{user,noteAdded,editTitle,editBody}, dispatch] = useStateValue()
     
-   var body1 = body.substr(0,30)
-   var title1 = title.substr(0,22)
+   var body1 = body.substr(0,20)
+   var title1 = title.substr(0,15)
    const deleteNote = () => {
             axios
             .post("/deleteNote", {
@@ -64,11 +65,12 @@ function SidebarNotes({id,title,body}) {
     return (
         <div className="sidebarNotes">
            <div className="sidebarNotes__noteData">
-                <h1>{title}</h1>
+                <h1>{title1}</h1>
                 <p>{body1}</p>
             </div>
             
             <div className="sidebarNotes__icons">
+            {/* <IconButton> <RevokeAccess /> </IconButton>  */}
             <IconButton onClick={editNote}> <EditIcon /> </IconButton>
                 <IconButton><ShareModal id={id}/> </IconButton>
                 <IconButton onClick={deleteNote}> <DeleteIcon /> </IconButton>

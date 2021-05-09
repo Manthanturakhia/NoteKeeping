@@ -6,18 +6,19 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
+import EditorWindow from "./EditorWindow"
 import {useStateValue} from "../StateProvider"
-
+import axios from "./axios"
 import { IconButton } from '@material-ui/core';
-
+import AddIcon from '@material-ui/icons/Add';
 import "./NoteModal.css";
-import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
 
+import FormatListBulletedOutlinedIcon from '@material-ui/icons/FormatListBulletedOutlined';
 
-export default function ViewModal({title,body}) {
+export default function RevokeAccess({title,body}) {
   const [open, setOpen] = React.useState(false);
-
+//   const[body,setBody] = useState("")
+//   const[title,setTitle] = useState("")
   const[{user,noteAdded},dispatch] = useStateValue()
 
   const handleClickOpen = () => {
@@ -35,10 +36,12 @@ export default function ViewModal({title,body}) {
   
   return (
     <div className="noteModal">
-      
+      {/* <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+        Add Note
+      </Button> */}
       <div className="noteModal__add"> 
       
-      <IconButton onClick={handleClickOpen}> <VisibilityOutlinedIcon onCLick={viewData} /></IconButton></div>
+      <IconButton onClick={handleClickOpen}> <FormatListBulletedOutlinedIcon/> </IconButton></div>
      
       
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
