@@ -6,6 +6,9 @@ import NoteOutlinedIcon from '@material-ui/icons/NoteOutlined';
 import {useStateValue} from "../StateProvider"
 function Header() {
     const[{user}] = useStateValue()
+    const logout=() => {
+        window.location.reload();
+      }
     return (
         <div className="header">
             <div className="header__left">
@@ -16,6 +19,7 @@ function Header() {
             </div>
             <div className="header__right">
                 <h3>{user}</h3><AccountCircleIcon />
+                <Button onClick={logout}>Log out</Button>
             </div>
         
         </div>

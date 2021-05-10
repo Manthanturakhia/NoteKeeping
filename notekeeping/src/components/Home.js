@@ -36,7 +36,7 @@ function Home() {
       });
       console.log("etst",res.data);
     });
-  }, [user,noteUpdated,revoke,setNotePermission]);
+  }, [user,noteUpdated,setNotePermission]);
 
   
   useEffect(() => {
@@ -48,7 +48,7 @@ function Home() {
       });
      console.log("permissions",res)
     });
-  }, [user,noteUpdated,revoke,setNotePermission]);
+  }, [user,noteUpdated,setNotePermission]);
 
   useEffect(() => {
     axios.get(`/getNotePermissionDetails?username=${user}`).then((res) => {

@@ -9,11 +9,7 @@ import session from "express-session";
 import jwt from "jsonwebtoken";
 
 app.use(
-  cors({
-    origin: ["http://localhost:3000"],
-    methods: ["GET", "POST"],
-    credentials: true,
-  })
+  cors()
 );
 
 //app.use(cookieParser);
@@ -34,11 +30,22 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // );
 
 const db = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "notemaking",
+  host: "sql6.freemysqlhosting.net",
+  user: "sql6411463",
+  password: "5ZMhRHM2sC",
+  database: "sql6411463",
+  port: 3306,
 });
+
+// const db = mysql.createPool({
+//   host: "localhost",
+//   user: "root",
+//   password: "",
+//   database: "notemaking",
+  
+// });
+
+
 
 app.post("/register", (req, res) => {
   const name = req.body.name;
@@ -49,8 +56,10 @@ app.post("/register", (req, res) => {
   const sqlInsert = "Insert into users values (?,?,?,?)";
   db.query(sqlInsert, [username, name, email, password], (err, result) => {
     if (err) {
+      console.log(err)
       res.status(500).send(err);
     } else {
+      
       res.status(201).send(result);
     }
   });
@@ -92,6 +101,7 @@ app.get("/getNotes", async (req, res) => {
       console.log("get Notes")
     } else {
       console.log(err);
+      return res.json(result);
       res.status(403).send(err);
     }
   });
@@ -106,6 +116,7 @@ app.post("/addNotes", (req, res) => {
   const sqlInsert = "INSERT INTO notes(username, title, body) VALUES (?,?,?)";
   db.query(sqlInsert, [username,title,body], (err, result) => {
     if (err) {
+      console.log("note added",err)
       res.status(500).send(err);
     } else {
       res.status(201).send(result);
@@ -236,16 +247,17 @@ app.get("/getReaderDetails", async (req, res) => {
 
 app.get("/getNotePermissionDetails", async (req, res) => {
   const username = req.query.username;
-  console.log(username)
+  
   const getUsers = "select * from permissions WHERE ousername=?";
   db.query(getUsers, [username], (err, result) => {
-    if (result.length > 0) {
-      return res.json(result);
-      console.log("get note permissions")
-    } else {
-
+    if (result.length == 0) {
+      
       console.log(err);
+      return res.json(result);
       res.status(403).send(err);
+    } else {
+      console.log("get note permissions")
+      return res.json(result);
     }
   });
 });
